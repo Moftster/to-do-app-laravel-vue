@@ -2,7 +2,7 @@ require("./bootstrap");
 
 import { createApp } from "vue";
 import App from "./App.vue";
-
+import router from './router'
 
 const app = createApp({
     components: {
@@ -10,4 +10,6 @@ const app = createApp({
       }
 });
 
-app.mount("#app");
+app
+    .use(router)
+    .mount("#app");

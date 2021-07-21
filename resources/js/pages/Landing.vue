@@ -5,12 +5,9 @@
 
 <script>
 
-import Card from '../components/Card'
-
 export default {
     name: 'Landing',
     components: {
-        Card
     }
 }
 </script>

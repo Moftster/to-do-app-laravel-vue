@@ -5,13 +5,16 @@
             <label>Task</label>
             <input type="text" v-model="text" name="text" placeholder="Add Task" />
         </div>
-        <div class="">
-        <label>Date & Time</label>
-            <input
+        <div class="flex">
+        <label>Due Date</label>
+            <!-- <input
                 type="text"
                 v-model="day"
                 name="day"
                 placeholder="Add Date & Time"
+            /> -->
+            <Datepicker 
+                inputFormat="d MMM yyy"
             />
         </div>
         <input type="submit" value="Add Task" class="" />
@@ -20,7 +23,12 @@
 </template>
 
 <script>
+import Datepicker from './DatePicker'
+
 export default {
-    name: 'AddTask'
+    name: 'AddTask',
+    components: {
+        Datepicker
+    }
 }
 </script>

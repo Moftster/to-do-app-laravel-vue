@@ -11,14 +11,19 @@
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, expedita? Officiis autem, omnis hic similique facere tempora culpa animi quisquam commodi illum sapiente error fugiat? Nobis, architecto? Sapiente, laborum sint!
         </p>
     </div>
+    <div>
+        <DayTasks />
+    </div>
 </template>
 
 <script>
 import AddTask from '../components/AddTask'
+import DayTasks from '../components/DayTasks'
 
 export default {
     components: {
-        AddTask
+        AddTask,
+        DayTasks
     }
 }
 </script>

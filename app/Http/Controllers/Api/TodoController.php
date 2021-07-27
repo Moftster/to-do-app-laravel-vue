@@ -12,4 +12,13 @@ class TodoController extends Controller
     {
         return ToDo::all();
     }
+
+    public function store(Request $request)
+    {
+        $todo = new Todo();
+        $todo->description = $request->text;
+        $todo->due_date = date_create($request->date);
+        $todo->completed = true;
+        return $todo->save();
+    }
 }

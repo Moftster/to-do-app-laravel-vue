@@ -18174,6 +18174,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AddTask',
+  data: function data() {
+    return {
+      text: '' // date: Date,
+
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit(e) {
+      var _this = this;
+
+      console.log('somethign happening');
+      e.preventDefault();
+
+      if (!this.text) {
+        alert('Please add a task');
+        return;
+      }
+
+      axios.post('./api/addtodo', {
+        text: this.text,
+        date: this.date
+      }).then(function (response) {
+        _this.text = '';
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      console.log('submit function working');
+    }
+  },
   components: {
     Datepicker: _DatePicker__WEBPACK_IMPORTED_MODULE_0__.default
   }
@@ -18438,22 +18467,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Datepicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Datepicker");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
-    onSubmit: _cache[2] || (_cache[2] = function () {
-      return _ctx.onSubmit && _ctx.onSubmit.apply(_ctx, arguments);
-    }),
-    "class": ""
+    method: "POST",
+    action: "./api/addtodo",
+    "class": "",
+    onSubmit: _cache[3] || (_cache[3] = function ($event) {
+      return $options.onSubmit();
+    })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.text = $event;
+      return $data.text = $event;
     }),
     name: "text",
     placeholder: "Add Task"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.text]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input\n                type=\"text\"\n                v-model=\"day\"\n                name=\"day\"\n                placeholder=\"Add Date & Time\"\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.text]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input\n                type=\"text\"\n                v-model=\"day\"\n                name=\"day\"\n                placeholder=\"Add Date & Time\"\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+    modelValue: _ctx.date,
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _ctx.date = $event;
+    }),
+    name: "date",
     inputFormat: "d MMM yyy"
-  })]), _hoisted_6], 32
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), _hoisted_6], 32
   /* HYDRATE_EVENTS */
   )]);
 }

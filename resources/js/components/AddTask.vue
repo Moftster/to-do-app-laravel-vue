@@ -1,6 +1,6 @@
 <template>
 <div class="bg-red-500 shadow rounded">
-    <form @submit="onSubmit" class="">
+    <form method="POST" action="./api/addtodo" class="" @submit="onSubmit()">
         <div class="">
             <label>Task</label>
             <input type="text" v-model="text" name="text" placeholder="Add Task" />
@@ -14,6 +14,8 @@
                 placeholder="Add Date & Time"
             /> -->
             <Datepicker 
+                v-model="date"
+                name="date"
                 inputFormat="d MMM yyy"
             />
         </div>
@@ -27,6 +29,34 @@ import Datepicker from './DatePicker'
 
 export default {
     name: 'AddTask',
+    data() {
+        return {
+            text: '',
+            // date: Date,
+     }
+    },
+    methods: {
+        onSubmit(e) {
+            console.log('somethign happening');
+            e.preventDefault()
+            if(!this.text){
+                alert('Please add a task')
+                return
+            }
+
+            axios.post('./api/addtodo', {
+                text: this.text,
+                date: this.date
+            })
+                .then(response => {
+                    this.text = '';
+                })
+                .catch(function(error){
+                    console.log(error);
+            });
+            console.log('submit function working');
+        },
+    },
     components: {
         Datepicker
     }

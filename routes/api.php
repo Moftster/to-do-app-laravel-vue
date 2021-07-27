@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('todos', 'App\Http\Controllers\Api\TodoController@index');
+Route::post('addtodo', 'App\Http\Controllers\Api\TodoController@store');

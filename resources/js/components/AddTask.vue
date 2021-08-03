@@ -1,6 +1,6 @@
 <template>
 <div class="bg-red-500 shadow rounded">
-    <form method="POST" action="./api/addtodo" class="" @submit="onSubmit()">
+    <form class="" @submit.prevent="onSubmit">
         <div class="">
             <label>Task</label>
             <input type="text" v-model="text" name="text" placeholder="Add Task" />
@@ -36,9 +36,8 @@ export default {
      }
     },
     methods: {
-        onSubmit(e) {
+        onSubmit() {
             console.log('somethign happening');
-            e.preventDefault()
             if(!this.text){
                 alert('Please add a task')
                 return

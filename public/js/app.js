@@ -18181,11 +18181,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    onSubmit: function onSubmit(e) {
+    onSubmit: function onSubmit() {
       var _this = this;
 
       console.log('somethign happening');
-      e.preventDefault();
 
       if (!this.text) {
         alert('Please add a task');
@@ -18467,12 +18466,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Datepicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Datepicker");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
-    method: "POST",
-    action: "./api/addtodo",
     "class": "",
-    onSubmit: _cache[3] || (_cache[3] = function ($event) {
-      return $options.onSubmit();
-    })
+    onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.onSubmit && $options.onSubmit.apply($options, arguments);
+    }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {

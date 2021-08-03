@@ -19,6 +19,7 @@ class TodoController extends Controller
         $todo->description = $request->text;
         $todo->due_date = date_create($request->date);
         $todo->completed = true;
-        return $todo->save();
+        $todo->save();
+        
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="font-mono text-4xl">To Do Items</h1>
-        <div v-for="todo in todos" :key="todo.id">
+        <div v-for="todo in todos" v-bind:key="todo.id">
             <h1 class="font-mono text-2xl" >
                 {{todo.description}}
             </h1>

@@ -6,13 +6,13 @@ import Landing from '../pages/Landing'
 const routes = [
     {
         path: '/',
-        name: 'Landing',
-        component: Landing
+        name: 'Home',
+        component: Home
     },
     {
         path: '/home',
-        name: 'Home',
-        component: Home
+        name: 'Landing',
+        component: Landing
     },
     {
         path: '/about',

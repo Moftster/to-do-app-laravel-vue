@@ -13,9 +13,9 @@
     </div>
     
     <div class="grid grid-cols-7 gap-1">
-        <div v-for="weekDay in weekDays">
+        <div v-for="weekDay in weekDays" :key="weekDay.getUTCDate()">
             <h1 class="font-mono text-2xl" >
-                {{dayNames[weekDay.getDay()]}}
+                {{dayNames[weekDay.getDay()]}} {{weekDay.getDate()}} {{monthNames[weekDay.getMonth()]}}
             </h1>
         </div>
     </div>
@@ -46,7 +46,6 @@ export default {
             for (let i = 0; i < 7; i++) {
                 let currentDay = new Date();
                 currentDay.setDate(currentDay.getDate()-1+i);
-                // const date = `${dayNames[currentDay.getDay()]} ${currentDay.getDay()} ${monthNames[currentDay.getMonth()]}`;
                 nextSevenDays.push(currentDay);
             }
             this.weekDays = nextSevenDays;

@@ -5,7 +5,7 @@
             My To Dos 
         </h1>
 
-        <AddTask />
+        <AddTask @add-task="newTask"/>
         
         <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, expedita? Officiis autem, omnis hic similique facere tempora culpa animi quisquam commodi illum sapiente error fugiat? Nobis, architecto? Sapiente, laborum sint!
@@ -20,39 +20,60 @@
         </div>
     </div>
    
-    <DayTasks />
+    <div class="">
+        <div v-for="todo in dailyTodos" v-bind:key="todo.id">
+            <h1 class="font-mono text-2xl" >
+                {{todo.description}}
+            </h1>
+            <h3 class="font-mono text-xl">
+                Due: {{todo.due_date}}
+            </h3>
+        </div>
+    </div>
 
 </template>
 
 <script>
 import AddTask from '../components/AddTask'
-import DayTasks from '../components/DayTasks'
 
 export default {
     components: {
-        AddTask,
-        DayTasks
+        AddTask
     },
     data: function() {
         return {
             weekDays: [],
             monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             dayNames: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            dailyTodos: [],
         }
     },
     methods: {
-        daysOfTheWeek() {
-            let nextSevenDays = [];
-            for (let i = 0; i < 7; i++) {
-                let currentDay = new Date();
-                currentDay.setDate(currentDay.getDate()-1+i);
-                nextSevenDays.push(currentDay);
+            daysOfTheWeek() {
+                let nextSevenDays = [];
+                for (let i = 0; i < 7; i++) {
+                    let currentDay = new Date();
+                    currentDay.setDate(currentDay.getDate()-1+i);
+                    nextSevenDays.push(currentDay);
+                }
+                this.weekDays = nextSevenDays;
+            }, 
+            loadDailyTodos() {
+                axios.get('/api/todos')
+                    .then((response)=>{
+                        this.dailyTodos = response.data;
+                })
+                    .catch(function(error){
+                        console.log(error);
+                });
+            }, 
+            newTask(newTask) {
+                this.dailyTodos.push(newTask);
             }
-            this.weekDays = nextSevenDays;
-        }
-    },
+        },
     mounted() {
         this.daysOfTheWeek();
+        this.loadDailyTodos();
     }
 }
 </script>

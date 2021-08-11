@@ -7,12 +7,6 @@
         </div>
         <div class="flex">
         <label>Due Date</label>
-            <!-- <input
-                type="text"
-                v-model="day"
-                name="day"
-                placeholder="Add Date & Time"
-            /> -->
             <Datepicker 
                 v-model="date"
                 name="date"
@@ -32,12 +26,11 @@ export default {
     data() {
         return {
             text: '',
-            // date: Date,
+            date: Date,
      }
     },
     methods: {
         onSubmit() {
-            console.log('somethign happening');
             if(!this.text){
                 alert('Please add a task')
                 return
@@ -48,12 +41,20 @@ export default {
                 date: this.date
             })
                 .then(response => {
+                    
+                    const newTask = {
+                        description: this.text,
+                        due_date: `${this.date.getDate()}-${this.date.getMonth()}-${this.date.getFullYear()}`
+                    }
+
+                    this.$emit('add-task', newTask);
+
                     this.text = '';
+                    this.date = new Date();
                 })
                 .catch(function(error){
                     console.log(error);
             });
-            console.log('submit function working');
         },
     },
     components: {

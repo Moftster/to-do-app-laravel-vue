@@ -44,7 +44,7 @@ export default {
                     
                     const newTask = {
                         description: this.text,
-                        due_date: `${this.date.getDate()}-${this.date.getMonth()}-${this.date.getFullYear()}`
+                        due_date: `${this.date.getDate()}-${this.date.getMonth()+1}-${this.date.getFullYear()}`
                     }
 
                     this.$emit('add-task', newTask);

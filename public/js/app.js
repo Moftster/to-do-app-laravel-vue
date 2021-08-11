@@ -18195,7 +18195,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         var newTask = {
           description: _this.text,
-          due_date: "".concat(_this.date.getDate(), "-").concat(_this.date.getMonth(), "-").concat(_this.date.getFullYear())
+          due_date: "".concat(_this.date.getDate(), "-").concat(_this.date.getMonth() + 1, "-").concat(_this.date.getFullYear())
         };
 
         _this.$emit('add-task', newTask);

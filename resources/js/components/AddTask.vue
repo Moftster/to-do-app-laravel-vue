@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             text: '',
-            date: Date,
+            date: new Date,
      }
     },
     methods: {

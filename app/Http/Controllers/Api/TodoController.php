@@ -10,7 +10,11 @@ class TodoController extends Controller
 {
     public function index()
     {
-        return ToDo::all();
+        $toDos = ToDo::all();
+        foreach($toDos as $toDo){
+            $toDo->due_date = date('d-m-Y', strtotime($toDo->due_date));
+        }
+        return $toDos;
     }
 
     public function store(Request $request)

@@ -15,21 +15,18 @@
     <div class="grid grid-cols-7 gap-1">
         <div v-for="weekDay in weekDays" :key="weekDay.getUTCDate()">
             <h1 class="font-mono text-2xl" >
-                {{dayNames[weekDay.getDay()]}} {{weekDay.getDate()}} {{monthNames[weekDay.getMonth()]}}
+                {{dayNames[weekDay.getDay()]}} {{weekDay.getDate()+1}} {{monthNames[weekDay.getMonth()]}}
             </h1>
+            <div v-for="todo in dailyTodos" v-bind:key="todo.id">
+                <div v-if="todo.due_date == JSON.stringify(weekDay).substring(1, 11)">
+                    <p class="font-mono" >
+                        {{todo.description}}
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
    
-    <div class="">
-        <div v-for="todo in dailyTodos" v-bind:key="todo.id">
-            <h1 class="font-mono text-2xl" >
-                {{todo.description}}
-            </h1>
-            <h3 class="font-mono text-xl">
-                Due: {{todo.due_date}}
-            </h3>
-        </div>
-    </div>
 
 </template>
 

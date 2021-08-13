@@ -15,7 +15,7 @@
     <div class="grid grid-cols-7 gap-1">
         <div v-for="weekDay in weekDays" :key="weekDay.getUTCDate()">
             <h1 class="font-mono text-2xl" >
-                {{dayNames[weekDay.getDay()]}} {{weekDay.getDate()+1}} {{monthNames[weekDay.getMonth()]}}
+                {{dayNames[weekDay.getDay()]}} {{weekDay.getDate()}} {{monthNames[weekDay.getMonth()]}}
             </h1>
             <div v-for="todo in dailyTodos" v-bind:key="todo.id">
                 <div v-if="todo.due_date == JSON.stringify(weekDay).substring(1, 11)">
@@ -23,6 +23,10 @@
                         {{todo.description}}
                     </p>
                 </div>
+                <!-- <div v-else>
+                    <p>test</p>
+                    <p>You have nothing to do this {{dayNames[weekDay.getDay()]}}. Add some tasks slacker!
+                </div> -->
             </div>
         </div>
     </div>
@@ -41,7 +45,7 @@ export default {
         return {
             weekDays: [],
             monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            dayNames: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             dailyTodos: [],
         }
     },
@@ -50,8 +54,8 @@ export default {
                 let nextSevenDays = [];
                 for (let i = 0; i < 7; i++) {
                     let currentDay = new Date();
-                    currentDay.setDate(currentDay.getDate()-1+i);
                     nextSevenDays.push(currentDay);
+                    currentDay.setDate(currentDay.getDate()+i);
                 }
                 this.weekDays = nextSevenDays;
             }, 

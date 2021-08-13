@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             text: '',
-            date: new Date,
+            date: new Date(),
      }
     },
     methods: {
@@ -36,15 +36,17 @@ export default {
                 return
             }
 
+            this.date.setTime(this.date.getTime() + (5*60*60*1000));
+
             axios.post('./api/addtodo', {
                 text: this.text,
-                date: this.date
+                date: this.date,
             })
                 .then(response => {
                     
                     const newTask = {
                         description: this.text,
-                        due_date: `${this.date.getDate()}-${this.date.getMonth()+1}-${this.date.getFullYear()}`
+                        due_date: `${JSON.stringify(this.date).substring(1, 11)}`
                     }
 
                     this.$emit('add-task', newTask);

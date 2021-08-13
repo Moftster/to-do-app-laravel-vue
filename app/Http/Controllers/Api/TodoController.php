@@ -15,9 +15,9 @@ class TodoController extends Controller
         //     $toDo->due_date = date('d-m-Y', strtotime($toDo->due_date));
         // }
         // return $toDos;
-            return ToDo::all();
-
-
+        
+        return ToDo::all();
+        
     }
 
     public function store(Request $request)

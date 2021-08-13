@@ -22,6 +22,9 @@
                     <p class="font-mono" >
                         {{todo.description}}
                     </p>
+
+                    <i @click="deleteTask()" class="far fa-trash-alt"></i>
+
                 </div>
                 <!-- <div v-else>
                     <p>test</p>
@@ -70,6 +73,9 @@ export default {
             }, 
             newTask(newTask) {
                 this.dailyTodos.push(newTask);
+            },
+            deleteTask() {
+                console.log('delete');
             }
         },
     mounted() {

@@ -13,18 +13,31 @@
     </div>
     
     <div class="grid grid-cols-7 gap-1">
-        <div v-for="weekDay in weekDays" :key="weekDay.getUTCDate()">
-            <h1 class="font-mono text-2xl" >
-                {{dayNames[weekDay.getDay()]}} {{weekDay.getDate()}} {{monthNames[weekDay.getMonth()]}}
-            </h1>
+        <div class="items-center" v-for="weekDay in weekDays" :key="weekDay.getUTCDate()">
+            <div class="text-center">
+                <h1 class="font-mono text-2xl pt-3">
+                    {{dayNames[weekDay.getDay()]}} 
+                </h1>
+
+                <h1 class="font-mono text-2xl pb-3">
+                    {{weekDay.getDate()}} {{monthNames[weekDay.getMonth()]}}
+                </h1>
+            </div>
+
             <div v-for="todo in dailyTodos" v-bind:key="todo.id">
-                <div v-if="todo.due_date == JSON.stringify(weekDay).substring(1, 11)">
-                    <p class="font-mono" >
-                        {{todo.description}}
-                    </p>
+                <div v-if="todo.due_date == JSON.stringify(weekDay).substring(1, 11)" class="border-2 border-black mb-2">
+                    <div class="p-2 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <p class="font-mono" >
+                                {{todo.description}}
+                            </p>
+                        </div>
+                        <div class="inline-block">
+                            <i @click="completeTask()" class="far fa-check-square p-1"></i>
 
-                    <i @click="deleteTask()" class="far fa-trash-alt"></i>
-
+                            <i @click="deleteTask()" class="far fa-trash-alt p-1"></i>
+                        </div>
+                    </div>
                 </div>
                 <!-- <div v-else>
                     <p>test</p>

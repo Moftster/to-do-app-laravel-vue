@@ -19748,13 +19748,29 @@ var _hoisted_4 = {
   "class": "grid grid-cols-7 gap-1"
 };
 var _hoisted_5 = {
-  "class": "font-mono text-2xl"
+  "class": "text-center"
 };
 var _hoisted_6 = {
-  key: 0
+  "class": "font-mono text-2xl pt-3"
 };
 var _hoisted_7 = {
+  "class": "font-mono text-2xl pb-3"
+};
+var _hoisted_8 = {
+  key: 0,
+  "class": "border-2 border-black mb-2"
+};
+var _hoisted_9 = {
+  "class": "p-2 flex justify-between items-center"
+};
+var _hoisted_10 = {
+  "class": "flex items-center"
+};
+var _hoisted_11 = {
   "class": "font-mono"
+};
+var _hoisted_12 = {
+  "class": "inline-block"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_AddTask = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AddTask");
@@ -19765,20 +19781,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["onAddTask"]), _hoisted_3]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.weekDays, function (weekDay) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "items-center",
       key: weekDay.getUTCDate()
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.dayNames[weekDay.getDay()]) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(weekDay.getDate()) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.monthNames[weekDay.getMonth()]), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.dayNames[weekDay.getDay()]), 1
     /* TEXT */
-    ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.dailyTodos, function (todo) {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(weekDay.getDate()) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.monthNames[weekDay.getMonth()]), 1
+    /* TEXT */
+    )]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.dailyTodos, function (todo) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: todo.id
-      }, [todo.due_date == JSON.stringify(weekDay).substring(1, 11) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(todo.description), 1
+      }, [todo.due_date == JSON.stringify(weekDay).substring(1, 11) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(todo.description), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
         onClick: _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.completeTask();
+        }),
+        "class": "far fa-check-square p-1"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+        onClick: _cache[1] || (_cache[1] = function ($event) {
           return $options.deleteTask();
         }),
-        "class": "far fa-trash-alt"
-      })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else>\n                    <p>test</p>\n                    <p>You have nothing to do this {{dayNames[weekDay.getDay()]}}. Add some tasks slacker!\n                </div> ")]);
+        "class": "far fa-trash-alt p-1"
+      })])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else>\n                    <p>test</p>\n                    <p>You have nothing to do this {{dayNames[weekDay.getDay()]}}. Add some tasks slacker!\n                </div> ")]);
     }), 128
     /* KEYED_FRAGMENT */
     ))]);
